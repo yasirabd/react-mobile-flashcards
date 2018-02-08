@@ -1,2 +1,2 @@
-# react-mobile-flashcards
-Flashcard App Made with React Native
+# Mobile Flashcards
+Flashcard App made with React Native
