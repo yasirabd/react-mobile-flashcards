@@ -50,9 +50,11 @@ class DeckDetails extends Component {
     const { deckId } = this.props.navigation.state.params
     this.props.onFetchDeckById(deckId)
   }
-
   addNewCard = (deckId: string) => {
     this.props.navigation.navigate('CardNew', { deckId })
+  }
+  startQuiz = (deckId: string) => {
+    this.props.navigation.navigate('Quiz', { deckId })
   }
 
   render() {
@@ -75,6 +77,7 @@ class DeckDetails extends Component {
           {deck && deck.questions.length > 0 && (
             <TouchableOpacity
               style={[styles.button, styles.startQuiz]}
+              onPress={() => this.startQuiz(deckId)}
             >
               <Text style={styles.buttonText}>Start Quiz</Text>
             </TouchableOpacity>

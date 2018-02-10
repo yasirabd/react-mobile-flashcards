@@ -10,6 +10,7 @@ import DeckList from './components/DeckList'
 import DeckDetails from './components/DeckDetails'
 import DeckNew from './components/DeckNew'
 import CardNew from './components/CardNew'
+import Quiz from './components/Quiz'
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { primary, lightPrimary, darkPrimary, white, secondary } from './utils/colors'
 
@@ -79,6 +80,10 @@ const MainNavigator = StackNavigator({
     screen: CardNew,
     navigationOptions
   },
+  Quiz: {
+    screen: Quiz,
+    navigationOptions
+  }
 })
 
 export default class App extends React.Component {
