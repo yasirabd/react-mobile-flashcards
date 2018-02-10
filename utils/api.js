@@ -44,3 +44,10 @@ export function getCardsCount(deck) {
   const count = deck && deck.questions ? deck.questions.length : 0
   return count <= 1 ? `${count} card` : `${count} cards`
 }
+
+export function getDeckById(deckId: string) {
+  return AsyncStorage.getItem(DECK_STORAGE_KEY).then(data => {
+    const decks = JSON.parse(data)
+    return decks[deckId]
+  })
+}

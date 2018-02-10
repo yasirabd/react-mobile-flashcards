@@ -31,7 +31,14 @@ class DeckList extends Component {
           data={decks}
           renderItem={({ item }) => (
             <TouchableOpacity
-              style={styles.deckLink}>
+              key={item.id}
+              style={styles.deckLink}
+              onPress={() =>
+                this.props.navigation.navigate('DeckDetails', {
+                  deckId: item.id
+                })
+              }
+            >
               <DeckListItem
                 title={item.title}
                 subTitle={item.cardCount}
