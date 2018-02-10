@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   item: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: darkPrimary,
+    backgroundColor: white,
     marginBottom: 10,
     padding: 25,
   },
@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 7,
-    color: white,
   },
   subTitle: {
     fontSize: 14,
