@@ -3,18 +3,11 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import * as t from 'tcomb-form-native'
 import { addDeck } from '../actions'
-import { white, darkPrimary } from '../utils/colors'
+import { white, darkPrimary, secondary } from '../utils/colors'
 
 const { Form } = t.form
 const Deck = t.struct({
-  name: t.String,
-})
-
-var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 30,
-  }
+  title: t.String,
 })
 
 class DeckNew extends Component {
@@ -29,11 +22,14 @@ class DeckNew extends Component {
   }
   onPress = () => {
     var value = this.refs.form.getValue();
-    this.props.onAddDeck(value.name).then(() => {
+    this.props.onAddDeck(value.title).then(() => {
       this.clearForm()
-    })
+      this.toDeckDetails(value.title)
+    });
   }
-
+  toDeckDetails = (deckTitle: string) => {
+    this.props.navigation.navigate('DeckDetails', { deckId: deckTitle })
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -45,17 +41,41 @@ class DeckNew extends Component {
         />
         <TouchableOpacity
           onPress={this.onPress}
-          underLayColor={darkPrimary}
+          underlayColor={secondary}
+          style={styles.button}
         >
-          <Text>Add</Text>
+          <Text style={styles.buttonText}>Add</Text>
         </TouchableOpacity>
       </View>
     )
   }
 }
 
+var styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 30,
+  },
+  buttonText: {
+    fontSize: 18,
+    color: white,
+    alignSelf: 'center'
+  },
+  button: {
+    height: 36,
+    padding: 10,
+    backgroundColor: secondary,
+    borderColor: secondary,
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 10,
+    alignSelf: 'stretch',
+    justifyContent: 'center'
+  }
+})
+
 const mapDispatchToProps = dispatch => ({
-  onAddDeck: (name: string) => dispatch(addDeck(name))
+  onAddDeck: (title: string) => dispatch(addDeck(title))
 })
 
 export default connect(undefined, mapDispatchToProps)(DeckNew)
