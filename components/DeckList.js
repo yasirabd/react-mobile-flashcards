@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View, FlatList, StyleSheet } from 'react-native'
+import { View, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
 
 import { fetchDecks } from '../actions'
 import { getCardsCount } from '../utils/api'
@@ -11,6 +11,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
+  },
+  deckLink: {
+    flex: 1,
   }
 })
 
@@ -24,14 +27,19 @@ class DeckList extends Component {
 
     return (
       <View style={styles.container}>
-        {decks.length > 0 &&
-          decks.map(deck => (
-            <DeckListItem
-              key={deck.id}
-              title={deck.title}
-              subTitle={deck.cardCount}
-            />
-        ))}
+        <FlatList
+          data={decks}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={styles.deckLink}>
+              <DeckListItem
+                title={item.title}
+                subTitle={item.cardCount}
+              />
+            </TouchableOpacity>
+          )}
+          keyExtractor={(item, index) => index}
+        />
       </View>
     )
   }
