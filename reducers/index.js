@@ -2,6 +2,7 @@ import {
   FETCH_DECKS_SUCCESS,
   FETCH_DECK_BY_ID_SUCCESS,
   ADD_DECK_SUCCESS,
+  ADD_CARD_SUCCESS,
 } from '../actions'
 
 export default function decks(state = { decks: [] }, action) {
@@ -22,6 +23,16 @@ export default function decks(state = { decks: [] }, action) {
           ...state.decks,
           ...action.deck,
         }
+      }
+    case ADD_CARD_SUCCESS:
+      const updatedDeck = action.deck
+      return {
+        ...state,
+        decks: {
+          ...state.decks,
+          [updatedDeck.title]: updatedDeck
+        },
+        selectedDeck: updatedDeck
       }
     default:
       return state

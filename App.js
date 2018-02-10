@@ -9,6 +9,7 @@ import reducer from './reducers'
 import DeckList from './components/DeckList'
 import DeckDetails from './components/DeckDetails'
 import DeckNew from './components/DeckNew'
+import CardNew from './components/CardNew'
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { primary, lightPrimary, darkPrimary, white, secondary } from './utils/colors'
 
@@ -62,8 +63,8 @@ const Tabs = TabNavigator({
 const navigationOptions = {
   headerTintColor: white,
   headerStyle: {
-    backgroundColor: primary
-  }
+    backgroundColor: primary,
+  },
 }
 
 const MainNavigator = StackNavigator({
@@ -72,6 +73,11 @@ const MainNavigator = StackNavigator({
   },
   DeckDetails: {
     screen: DeckDetails,
+    navigationOptions,
+  },
+  CardNew: {
+    screen: CardNew,
+    navigationOptions
   },
 })
 
