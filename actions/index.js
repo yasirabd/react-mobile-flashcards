@@ -2,6 +2,7 @@ import * as api from '../utils/api'
 
 export const FETCH_DECKS_SUCCESS = 'FETCH_DECKS_SUCCESS'
 export const FETCH_DECK_BY_ID_SUCCESS = 'FETCH_DECK_BY_ID_SUCCESS'
+export const ADD_DECK_SUCCESS = 'ADD_DECK_SUCCESS'
 
 export function fetchDecks() {
   return dispatch =>
@@ -23,6 +24,18 @@ export function fetchDeckById(deckId: string) {
 function fetchDeckByIdSuccess(deck) {
   return {
     type: FETCH_DECK_BY_ID_SUCCESS,
+    deck
+  }
+}
+
+export function addDeck(deckTitle: string) {
+  return dispatch =>
+    api.addDeck(deckTitle).then(deck => dispatch(addDeckSuccess(deck)))
+}
+
+function addDeckSuccess(deck) {
+  return {
+    type: ADD_DECK_SUCCESS,
     deck
   }
 }

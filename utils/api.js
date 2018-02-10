@@ -51,3 +51,15 @@ export function getDeckById(deckId: string) {
     return decks[deckId]
   })
 }
+
+export function addDeck(deckTitle: string) {
+  const newDeck = {
+    [deckTitle]: {
+      title: deckTitle,
+      questions: [],
+    }
+  }
+
+  return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(newDeck))
+    .then(() => newDeck)
+}
