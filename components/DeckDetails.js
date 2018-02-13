@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-
 import { fetchDeckById } from '../actions'
-import { getCardsCount } from '../utils/api'
-
+import {
+  getCardsCount,
+  setLocalNotification,
+  clearLocalNotification,
+} from '../utils/api'
 import { primary, secondary, white } from '../utils/colors'
 
 const styles = StyleSheet.create({
@@ -54,6 +56,7 @@ class DeckDetails extends Component {
     this.props.navigation.navigate('CardNew', { deckId })
   }
   startQuiz = (deckId: string) => {
+    clearLocalNotification().then(setLocalNotification)
     this.props.navigation.navigate('Quiz', { deckId })
   }
 

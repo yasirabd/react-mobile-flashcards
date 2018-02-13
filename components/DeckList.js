@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { View, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
-
 import { fetchDecks } from '../actions'
 import { getCardsCount } from '../utils/api'
-
 import DeckListItem from './DeckListItem'
 
 const styles = StyleSheet.create({

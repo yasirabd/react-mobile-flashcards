@@ -5,7 +5,7 @@ import * as t from 'tcomb-form-native'
 import { addDeck } from '../actions'
 import { white, darkPrimary, secondary } from '../utils/colors'
 
-const { Form } = t.form
+const Form = t.form.Form
 const Deck = t.struct({
   title: t.String,
 })

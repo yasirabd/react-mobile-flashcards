@@ -13,6 +13,7 @@ import CardNew from './components/CardNew'
 import Quiz from './components/Quiz'
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { primary, lightPrimary, darkPrimary, white, secondary } from './utils/colors'
+import { setLocalNotification } from './utils/api'
 
 const middlewares = [thunk]
 const store = createStore(reducer, applyMiddleware(...middlewares))
@@ -87,6 +88,10 @@ const MainNavigator = StackNavigator({
 })
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification()
+  }
+  
   render() {
     return (
       <Provider store={store}>
