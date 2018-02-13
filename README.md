@@ -8,4 +8,6 @@ Clone this repository.
 - `npm install`
 - `npm start`
 
-Open Expo IDE to test the Flashcard app on Android and iOS
+Open Expo IDE to test the Flashcard app on Android and iOS.
+
+*Note: This App tested only on Android Marshmallow (API level 23)

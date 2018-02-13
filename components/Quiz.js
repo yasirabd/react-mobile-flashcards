@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { primary, secondary, lightSecondary, white, green, red } from '../utils/colors'
 import type { Question } from '../utils/definition'
 import { getScoreFeedback } from '../utils/quiz'
+import { setLocalNotification, clearLocalNotification } from '../utils/api'
 
 type Props = {
   questions: Question[],
@@ -65,6 +66,10 @@ class Quiz extends Component<Props> {
       showResult: false,
     })
   }
+  goBackToDeckDetails = () => {
+    clearLocalNotification().then(setLocalNotification)
+    this.props.navigation.goBack()
+  }
   render() {
     const { questions } = this.props
     const totalQuestion = questions.length
@@ -100,7 +105,7 @@ class Quiz extends Component<Props> {
               <Text style={styles.buttonText}>Restart Quiz</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
+              onPress={this.goBackToDeckDetails}
               style={[{ marginTop: 10, backgroundColor: primary }, styles.button]}
             >
               <Text style={styles.buttonText}>Back to Deck</Text>
