@@ -5,7 +5,7 @@ import {
   ADD_CARD_SUCCESS,
 } from '../actions'
 
-export default function decks(state = { decks: [] }, action) {
+export default function decks(state = { decks: [], selectedDeck: null }, action) {
   switch (action.type) {
     case FETCH_DECKS_SUCCESS:
       return {
